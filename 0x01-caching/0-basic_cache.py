@@ -7,6 +7,7 @@ BasicCaching = __import__('base_caching').BaseCaching
 class BasicCache(BasicCaching):
     """Basic cache implementation class"""
     def __init__(self):
+        """Init method"""
         super().__init__()
 
     def put(self, key, item):
@@ -15,6 +16,7 @@ class BasicCache(BasicCaching):
             self.cache_data[key] = item
 
     def get(self, key):
+        """Get method implementation"""
         try:
             if key is None:
                 return None
