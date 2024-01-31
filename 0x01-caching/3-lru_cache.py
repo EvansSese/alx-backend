@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""LIFO Cache class"""
+"""LRU Cache class"""
 
 BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LRUCache(BaseCaching):
-    """FIFO Cache class"""
+    """LRU Cache class"""
     def __init__(self):
         """Init method"""
         super().__init__()
