@@ -9,10 +9,12 @@ class LFUCache(BaseCaching):
         """ Initialize LFUCache """
         super().__init__()
         self.frequency_counter = {}
+        self.order_of_access = []
 
     def put(self, key, item):
         """ Add an item to the cache using LFU strategy """
         if key is not None and item is not None:
+
             self.frequency_counter[key] = self.frequency_counter.get(key, 0) + 1
 
             if len(self.cache_data) >= self.MAX_ITEMS:
@@ -21,15 +23,17 @@ class LFUCache(BaseCaching):
                                        v == min(
                                            self.frequency_counter.values())]
 
-                if len(least_frequent_keys) > 1:
-                    lru_key = min(least_frequent_keys,
-                                  key=lambda k: self.order_of_access.index(k))
-                    least_frequent_keys = [lru_key]
+                lru_key = min(least_frequent_keys,
+                              key=lambda k: self.order_of_access.index(k)
+                              if k in self.order_of_access else float('inf'))
+                least_frequent_keys = [lru_key]
 
                 lfu_key = least_frequent_keys[0]
                 print("DISCARD: {}".format(lfu_key))
-                del self.cache_data[lfu_key]
-                del self.frequency_counter[lfu_key]
+                if lfu_key in self.cache_data:
+                    del self.cache_data[lfu_key]
+                    del self.frequency_counter[lfu_key]
+                    self.order_of_access.remove(lfu_key)
 
             self.cache_data[key] = item
             self.order_of_access.append(key)
