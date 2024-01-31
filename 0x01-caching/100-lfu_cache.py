@@ -16,7 +16,8 @@ class LFUCache(BaseCaching):
         """ Add an item to the cache using LFU strategy """
         if key is not None and item is not None:
 
-            self.frequency_counter[key] = self.frequency_counter.get(key, 0) + 1
+            self.frequency_counter[key] = (
+                    self.frequency_counter.get(key, 0) + 1)
 
             if len(self.cache_data) >= self.MAX_ITEMS:
                 least_frequent_keys = [k for k, v in
@@ -46,7 +47,8 @@ class LFUCache(BaseCaching):
                 self.order_of_access.remove(key)
                 self.order_of_access.append(key)
 
-            self.frequency_counter[key] = self.frequency_counter.get(key, 0) + 1
+            self.frequency_counter[key] = (
+                    self.frequency_counter.get(key, 0) + 1)
 
             return self.cache_data.get(key, None)
         else:
