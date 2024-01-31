@@ -1,11 +1,11 @@
 #!/usr/bin/env python 3
-"""LFU Class"""
+"""LFU Cache Class"""
 
 BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LFUCache(BaseCaching):
-    """LFU Class"""
+    """LFU Cache Class"""
     def __init__(self):
         """ Initialize LFUCache """
         super().__init__()
