@@ -15,7 +15,7 @@ class Config:
 
 babel = Babel(app)
 
-@babel.localeselector
+
 def get_locale():
     locale = request.args.get('locale', '').strip()
     if locale and locale in Config.LANGUAGES:
@@ -25,7 +25,7 @@ def get_locale():
 
 @app.route('/')
 def index():
-    return render_template('0-index.html')
+    return render_template('4-index.html')
 
 
 app.config.from_object(Config)

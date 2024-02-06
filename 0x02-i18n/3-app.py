@@ -22,7 +22,7 @@ def get_locale():
 
 @app.route('/')
 def index():
-    return render_template('0-index.html')
+    return render_template('3-index.html')
 
 
 app.config.from_object(Config)
