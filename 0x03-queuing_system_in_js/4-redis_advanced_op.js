@@ -29,7 +29,6 @@ function displayHash() {
     if (err) {
       console.error(`Error getting hash from Redis: ${err.message}`);
     } else {
-      console.log('Hash stored in Redis:');
       console.log(hash);
     }
   });
