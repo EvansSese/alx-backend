@@ -18,7 +18,7 @@ subscriber.subscribe('holberton school channel');
 
 // Event handler for incoming messages
 subscriber.on('message', (channel, message) => {
-  console.log(`Message received on channel ${channel}: ${message}`);
+  console.log(`${message}`);
   if (message === 'KILL_SERVER') {
     subscriber.unsubscribe();
     subscriber.quit();
