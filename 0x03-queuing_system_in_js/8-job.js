@@ -25,3 +25,6 @@ function createPushNotificationsJobs(jobs, queue) {
     job.save();
   });
 }
+
+
+export default createPushNotificationsJobs;
